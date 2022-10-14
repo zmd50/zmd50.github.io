@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        :root{
+            --bg-color:#eee;
+            --odd-color:#ccc;
+            --block-color:#3ef;
+            --primary-color:#38f;
+            --error-color:#f35;
+            --table-line-color:#00228950;
+        }
+        *{
+            margin: 0;
+            padding: 0;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        }
+        body{ 
+            position: relative;
+            box-sizing: border-box;
+            overflow-x: hidden;
+            overflow-y: scroll;
+            width: 100%;
+            height: 100vh;
+            font-size: 16pt;
+            background-color: var(--bg-color);
+        }
+        .container{
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+        .block{
+            width: 100%;
+            padding: 10px 50px;
+            min-height: 100px;
+            box-shadow: 1px 1px 2px var(--primary-color);
+        }
+        .block h2{
+            font-size: 20pt;
+            font-weight: 600;
+            font-style: italic;
+            padding: 10px 0;
+            border-bottom: 3px dotted var(--table-line-color);
+        }
+        .block p{
+            font-size: 16pt;
+            font-weight: 500;
+        }
+        .params{
+            width: 100%;
+            border-spacing: none;
+            border-collapse: collapse;
+            text-align: center;
+            margin: 20px;
+        }
+        .params thead {
+            background-color: var(--primary-color);
+            color: var(--bg-color);
+        }
+        .params tr{
+            line-height: 40px;
+        }
+        .params tbody tr{
+            font-size: 14pt;
+        }
+        .params tbody tr:nth-of-type(even){
+            background-color: var(--odd-color);
+        }
+        .params tr td{
+            border: 1px solid var(--table-line-color);
+        }
+        .line-block{
+            width: 100%;
+            line-height: 3rem;
+            position: relative;
+        }
+        .line-block *{
+            display: inline-block;
+        }
+        .line-block p.method{
+            color: var(--primary-color);
+            font-weight: 600;
+            font-stretch: narrower;
+        }
+        .line-block label{
+            min-width: 8rem;
+            display: inline-block;
+        }
+        .line-block input{
+            text-indent: 1rem;
+            min-height: 2rem;
+            min-width: 20rem;
+        }
+        .block .result{
+            font-size: 10pt;
+            font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            border: 4px dotted var(--error-color);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+       <div class="block">
+           <h1 class="title">title</h1>
+           <p class="description">descdescdescdesc</p>
+       </div>
+       <div class="block">
+           <h2>地址</h2>
+           <div class="line-block">
+            <p class="addr">111111</p>
+            <p class="method">GET</p>
+           </div>
+       </div>
+       <div class="block">
+           <h2>参数列表</h2>
+           <table class="params">
+               <thead>
+                   <tr>
+                       <td>参数名</td>
+                       <td>描述</td>
+                       <td>类型</td>
+                       <td>是否必要</td>
+                   </tr>
+               </thead>
+               <tbody class="param-body">
+                <tr>
+                    <td>参数名</td>
+                    <td>描述</td>
+                    <td>类型</td>
+                    <td>是否必要</td>
+                </tr>
+                <tr>
+                    <td>参数名</td>
+                    <td>描述</td>
+                    <td>类型</td>
+                    <td>是否必要</td>
+                </tr>
+               </tbody>
+           </table>
+       </div>
+       <div class="block">
+            <h2>使用示例</h2>
+            <div class="line-block">
+                <label>URL</label>
+                <input type="text" disabled class="url">
+            </div>
+            <div class="line-block">
+                <label>METHOD</label>
+                <input type="text" disabled class="umethod">
+            </div>
+            <div class="line-block">
+                <label>RETURN</label>
+            </div>
+            <div class="block">
+                <pre class="result">
+                    
+                </pre>
+            </div>
+       </div>
+    </div>
+
+    <script>
+        const content={
+            "title":"模具信息删除",
+            "desc":"此API用于删除指定模具的信息",
+            "addr":"http://127.0.0.1:8000/model/del/",
+            "method":"GET",
+            "params":[
+                ["model_id","模具编号","String","True"]
+            ],
+            "return":`
+            {
+                "status":true,
+                "msg":"model delete success",
+                "data":null
+            }
+            `
+        }
+
+        window.onload=function(){
+            const title=document.querySelector(".title");
+            const desc=document.querySelector(".description");
+            const addr=document.querySelector(".addr");
+            const amethod=document.querySelector(".method");
+            const params=document.querySelector(".param-body");
+            const result=document.querySelector(".result");
+            const url=document.querySelector(".url");
+            const umethod=document.querySelector(".umethod");
+
+
+            title.innerText=content.title
+            desc.innerText=content.desc
+            addr.innerText=content.addr
+            amethod.innerText=content.method
+            url.value=content.addr
+            umethod.value=content.method
+            result.innerText=content.return
+            const template="<tr><td>$1$</td><td>$2$</td><td>$3$</td><td>$4$</td></tr>"
+            let params_html=""
+            for(let param of content.params){
+                let item=template.slice()
+                item=item.replace("$1$",param[0])
+                item=item.replace("$2$",param[1])
+                item=item.replace("$3$",param[2])
+                item=item.replace("$4$",param[3])
+                params_html+=item
+            }
+            params.innerHTML=params_html
+        }
+
+    </script>
+</body>
+</html>

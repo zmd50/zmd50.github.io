@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IDX</title>
+    <style>
+        .container{
+            width: 100%;
+            height: 100%;
+            overflow-x: hidden;
+            box-sizing: border-box;
+            background-color: transparent;
+        }
+        .block{
+            box-sizing: border-box;
+            width: calc(100% - 3rem);
+            margin: 2rem;
+            padding: 1rem;
+            background-color: #dcd;
+            border-radius: 8px;
+            box-shadow: inset 1px 1px 5px rgba(0,0,0,0.5);
+        }
+        .block .block-title{
+            color: rgba(0,0,0,0.6);
+            font-weight: 800;
+            font-size: 14pt;
+            font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        }
+        .block .block-content ul li::marker{
+            color:tomato;
+            line-height: 4rem;
+        }
+        .block-content ul li a{
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="block">
+            <div class="block-title">用户管理API</div>
+            <div class="block-content">
+                <ul>
+                    <li><a href="./users/status.html">用户状态</a></li>
+                    <li><a href="./users/logout.html">用户注销</a></li>
+                    <li><a href="./users/login.html">用户登录</a></li>
+                    <li><a href="./users/register.html">用户新增</a></li>
+                    <li><a href="./users/user_delete.html">用户删除</a></li>
+                    <li><a href="./users/user_list.html">获取所有用户信息</a></li>
+                    <li><a href="./users/user_update.html">更新用户信息</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="block">
+            <div class="block-title">模具管理API</div>
+            <div class="block-content">
+                <ul>
+                    <li><a href="./models/spec_list.html">机种&品名&模号 信息获取</a></li>
+                    <li><a href="./models/spec_add.html">机种&品名&模号 信息添加</a></li>
+                    <li><a href="./models/spec_update.html">机种&品名&模号 信息更新</a></li>
+                    <li><a href="./models/spec_delete.html">机种&品名&模号 信息删除</a></li>
+                    
+                    
+                    <li><a href="./models/model_list.html">模具信息的获取与查找</a></li>
+                    <li><a href="./models/model_add.html">模具信息的添加</a></li>
+                    <li><a href="./models/model_update.html">模具信息的更新</a></li>
+                    <li><a href="./models/model_delete.html">模具信息的删除</a></li>
+                    
+
+                    <li><a href="./models/mttype_list.html">获取所有维修&保养类别信息</a></li>
+                    <li><a href="./models/mttype_add.html">维修&保养类别信息的新增</a></li>
+                    <li><a href="./models/mttype_search.html"><del>获取指定机种&品名&模号绑定的维修&保养信息</del></a></li>
+                    <li><a href="./models/mttype_get.html">保养&维修信息的获取与查找</a></li>
+                    <li><a href="./models/mttype_spec_add.html"><del>为指定机种&品名&模号绑定保养&维修信息</del></a></li>
+                    
+                    
+                    <li><a href="./models/md_list.html">获取指定模具编号对应的保养&维修履历</a></li>
+                    <li><a href="./models/md_add.html">新增指定模具编号对应的保养&维修履历</a></li>
+                    <li><a href="./models/md_update.html">更新指定模具编号对应的保养&维修履历</a></li>
+                    <li><a href="./models/md_delete.html">删除指定模具编号对应的保养&维修履历</a></li>
+                    
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
