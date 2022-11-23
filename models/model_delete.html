@@ -5,103 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <style>
-        :root{
-            --bg-color:#eee;
-            --odd-color:#ccc;
-            --block-color:#3ef;
-            --primary-color:#38f;
-            --error-color:#f35;
-            --table-line-color:#00228950;
-        }
-        *{
-            margin: 0;
-            padding: 0;
-            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-        }
-        body{ 
-            position: relative;
-            box-sizing: border-box;
-            overflow-x: hidden;
-            overflow-y: scroll;
-            width: 100%;
-            height: 100vh;
-            font-size: 16pt;
-            background-color: var(--bg-color);
-        }
-        .container{
-            position: absolute;
-            width: 100%;
-            height: 100%;
-        }
-        .block{
-            width: 100%;
-            padding: 10px 50px;
-            min-height: 100px;
-            box-shadow: 1px 1px 2px var(--primary-color);
-        }
-        .block h2{
-            font-size: 20pt;
-            font-weight: 600;
-            font-style: italic;
-            padding: 10px 0;
-            border-bottom: 3px dotted var(--table-line-color);
-        }
-        .block p{
-            font-size: 16pt;
-            font-weight: 500;
-        }
-        .params{
-            width: 100%;
-            border-spacing: none;
-            border-collapse: collapse;
-            text-align: center;
-            margin: 20px;
-        }
-        .params thead {
-            background-color: var(--primary-color);
-            color: var(--bg-color);
-        }
-        .params tr{
-            line-height: 40px;
-        }
-        .params tbody tr{
-            font-size: 14pt;
-        }
-        .params tbody tr:nth-of-type(even){
-            background-color: var(--odd-color);
-        }
-        .params tr td{
-            border: 1px solid var(--table-line-color);
-        }
-        .line-block{
-            width: 100%;
-            line-height: 3rem;
-            position: relative;
-        }
-        .line-block *{
-            display: inline-block;
-        }
-        .line-block p.method{
-            color: var(--primary-color);
-            font-weight: 600;
-            font-stretch: narrower;
-        }
-        .line-block label{
-            min-width: 8rem;
-            display: inline-block;
-        }
-        .line-block input{
-            text-indent: 1rem;
-            min-height: 2rem;
-            min-width: 20rem;
-        }
-        .block .result{
-            font-size: 10pt;
-            font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-            border: 4px dotted var(--error-color);
-        }
-    </style>
+    <link rel="stylesheet" href="../style.css">
     <script src="../controller.js"></script>
 </head>
 <body>
@@ -174,6 +78,7 @@
             "params":[
                 ["model_id","模具编号","String","True"]
             ],
+            "extern":"model_id=123566",
             "return":`
             {
                 "status":true,

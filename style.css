@@ -1,0 +1,111 @@
+:root{
+    --bg-color:#eee;
+    --odd-color:#ccc;
+    --block-color:#3ef;
+    --primary-color:#38f;
+    --error-color:#f35;
+    --table-line-color:#00228950;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+body{ 
+    box-sizing: border-box;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    width: 100vw;
+    height: 100vh;
+    /* max-width: 800px; */
+    font-size: 16pt;
+    background-color: var(--bg-color);
+    position: relative;
+}
+.container{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+.block{
+    width: 100%;
+    padding: 10px 50px;
+    min-height: 100px;
+    box-shadow: 1px 1px 2px var(--primary-color);
+}
+.block h2{
+    font-size: 20pt;
+    font-weight: 600;
+    font-style: italic;
+    padding: 10px 0;
+    border-bottom: 3px dotted var(--table-line-color);
+}
+.block p{
+    font-size: 16pt;
+    font-weight: 500;
+}
+.params{
+    width: 100%;
+    border-spacing: none;
+    border-collapse: collapse;
+    text-align: center;
+    margin: 20px;
+}
+.params thead {
+    background-color: var(--primary-color);
+    color: var(--bg-color);
+}
+.params tr{
+    line-height: 40px;
+}
+.params tbody tr{
+    font-size: 14pt;
+}
+.params tbody tr:nth-of-type(even){
+    background-color: var(--odd-color);
+}
+.params tr td{
+    border: 1px solid var(--table-line-color);
+}
+.line-block{
+    width: 100%;
+    line-height: 3rem;
+    position: relative;
+}
+.line-block *{
+    display: inline-block;
+}
+.line-block p.method{
+    color: var(--primary-color);
+    font-weight: 600;
+    font-stretch: narrower;
+}
+.line-block label{
+    min-width: 8rem;
+    
+}
+.line-block input{
+    text-indent: 1rem;
+    min-height: 2rem;
+    display: inline-block;
+}
+.line-block input.umethod{
+    max-width: 8rem;
+    text-align: center;
+    background-color: #38f;
+    color: #eee;
+    font-weight: 600;
+    font-size: 14pt;
+    border-radius: 2px;
+}
+.line-block input.url{
+    min-width: calc(100% - 100px);
+    padding: 1px 8px;
+    overflow-x: scroll;
+}
+.block .result{
+    font-size: 10pt;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    border: 4px dotted var(--error-color);
+}
