@@ -102,6 +102,7 @@
             border: 4px dotted var(--error-color);
         }
     </style>
+    <script src="../controller.js"></script>
 </head>
 <body>
     <div class="container">
@@ -163,7 +164,7 @@
             </div>
        </div>
     </div>
-
+    
     <script>
         const content={
             "title":"模具信息获取",
@@ -171,10 +172,10 @@
             "addr":"http://127.0.0.1:8000/model/list/",
             "method":"GET",
             "params":[
-                ["patternno","机种","String","返回值属性"],
-                ["spname","品名","String","返回值属性"],
-                ["spmno","模号","String","返回值属性"],
-                ["model_id","模具编号","String","返回值属性"],
+                ["patternno","机种","String","返回值属性/查询参数"],
+                ["spname","品名","String","返回值属性/查询参数"],
+                ["spmno","模号","String","返回值属性/查询参数"],
+                ["model_id","模具编号","String","返回值属性/查询参数"],
                 ["maintain_times","保养频率","Number","返回值属性"],
                 ["counts","计数器当前计数","Number","返回值属性"],
                 ["counter_id","计数器ID","String","返回值属性"],
@@ -182,6 +183,7 @@
                 ["percent","占比%","Number","返回值属性"],
                 ["future_maintain","下次保养时间","Date","返回值属性"],
             ],
+            "extern":"spname=housing",
             "return":`
             {
                 "status": true,
@@ -214,38 +216,6 @@
             }
             `
         }
-
-        window.onload=function(){
-            const title=document.querySelector(".title");
-            const desc=document.querySelector(".description");
-            const addr=document.querySelector(".addr");
-            const amethod=document.querySelector(".method");
-            const params=document.querySelector(".param-body");
-            const result=document.querySelector(".result");
-            const url=document.querySelector(".url");
-            const umethod=document.querySelector(".umethod");
-
-
-            title.innerText=content.title
-            desc.innerText=content.desc
-            addr.innerText=content.addr
-            amethod.innerText=content.method
-            url.value=content.addr
-            umethod.value=content.method
-            result.innerText=content.return
-            const template="<tr><td>$1$</td><td>$2$</td><td>$3$</td><td>$4$</td></tr>"
-            let params_html=""
-            for(let param of content.params){
-                let item=template.slice()
-                item=item.replace("$1$",param[0])
-                item=item.replace("$2$",param[1])
-                item=item.replace("$3$",param[2])
-                item=item.replace("$4$",param[3])
-                params_html+=item
-            }
-            params.innerHTML=params_html
-        }
-
     </script>
 </body>
 </html>
